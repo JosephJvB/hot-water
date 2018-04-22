@@ -1,5 +1,10 @@
 import h from 'react-hyperscript'
+import { connect } from 'react-redux'
 
-export default () => (
-	h('h1', 'weeeeeelcome hooome')
-)
+const mapStateToProps = state => ({ state })
+
+export default connect(mapStateToProps)((props) => {
+	console.log('HOME PROPS', props)
+	return h('h1', 'weeeeeelcome hooome')
+})
+
