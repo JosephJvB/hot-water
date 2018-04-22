@@ -1,0 +1,7 @@
+node_modules
+static
+npm-debug.log
+bundle.*
+dev.sqlite3
+.vscode
+.DS_Store
