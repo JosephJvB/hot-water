@@ -18,3 +18,14 @@ fela
 helmet
 node-dev -> hot reloader
 winston
+
+MINDED STRUCTURE: //
+  - reducers use { handleActions } from 'redux-actions'
+  - createStructuredSelector from 'reselect'
+
+
+TODOS: //
+- document dependencies
+- set up structured selectors for state / props
+- I dont have any setup for a database, is that a problem...
+  -> if I could set up PG that would be good learning
