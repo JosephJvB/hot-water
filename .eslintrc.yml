@@ -30,3 +30,6 @@ rules:
     - warn
     - vars: all
       args: after-used
+  object-curly-spacing:
+    - warn
+    - always
