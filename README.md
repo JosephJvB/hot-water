@@ -63,8 +63,6 @@ routerMiddleware is an item in the middleware array applied in creating the redu
 ## Package: [webpack](https://github.com/webpack/webpack)
 <details>
 
-<details>
-
 ### Script(s): `webpack --watch --mode development`
 ### Usage:
 This script bundles my client code and saves it in a file called bundle.js (imaginative I know). I then have a script tag on my html template page that asks for the bundle's contents and that's how my client-code gets into the html document.
