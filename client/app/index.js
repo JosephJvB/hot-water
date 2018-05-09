@@ -8,7 +8,7 @@ import createHistory from 'history/createBrowserHistory'
 
 import routes from './routes'
 import theme from './theme'
-import {ConnectedSwitch, createStore } from './util'
+import { ConnectedSwitch, createStore } from './util'
 
 const mountNode = document.getElementById('stylesheet')
 
