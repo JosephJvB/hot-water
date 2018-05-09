@@ -1,10 +1,36 @@
 # Boiling it up:
 
-- [react-router-config](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config)
-- [react-router-redux](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-redux)
-- []() 
-- []() 
-- []() 
+- [Eslint-airbnb config](https://github.com/airbnb/javascript): I run this command to install airbnb's eslint config locally :)
+```bash
+  (
+    export PKG=eslint-config-airbnb;
+    npm info "$PKG@latest" peerDependencies --json | command sed 's/[\{\},]//g ; s/: /@/g' | xargs npm install --save-dev "$PKG@latest"
+  )
+```
+<hr/>
+
+- [react-router-config](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config)<br/>
+### Component(s): `renderRoutes`
+### Usage:
+renderRoutes accepts an array of route objects and renders them. Alternative that I've used in the past is a dedicated custom h(Routes) component with react-router's Route component as children. This is cleaner - I guess?
+<hr/>
+
+- [react-router-redux](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-redux)<br/>
+### Component(s): `ConnectedRouter`
+### Usage:
+attach a history object to redux state.
+<hr/>
+
+- []()<br/>
+### Components: ``
+### Usage:
+<hr/>
+
+- []()<br/>
+### Components: ``
+### Usage:
+<hr/>
+
 
 webpack / webpack-cli / webpack-dev-server
 
