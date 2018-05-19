@@ -8,6 +8,7 @@ module.exports = {
 	module: {
 		rules: [{
 			test: /\.js$/,
+			// https://github.com/feathersjs/rest-client/issues/14#issuecomment-344400104
 			exclude: /node_modules\/(?!(@feathersjs))/,
 			use: {
 				loader: 'babel-loader'

@@ -2,6 +2,16 @@
 
 This is my boilerplate ripped straight from a private project that starts with and 'M' and rhymes with 'blinded'. I'm making this repo for my own learning about how to put together an app brick-by-brick. First step is to copy, and strip out any bits I don't need. Next step is to add in the bits I really want.
 
+## Package: [babel](https://github.com/babel/babel)
+<details>
+
+### Sub-packages: `babel-core, babel-loader, babel-polyfill, babel-preset-env`
+### Usage:
+sorry to say that I can't explain each babel-subpackage. I can say that babel's job is to take all my tricky ES6 syntax and convert it into older JS syntax so that every browser can read and understand it. Stuff like `import` fat-arrow functions, async/await and generator/yields. I played around in babels sandbox mode where it transpiles es6 and shows you the result. Todo: understand the babel building blocks.
+
+</details>
+<hr/>
+
 ## Package: [Chalk](https://github.com/chalk/chalk)
 <details>
 
@@ -18,6 +28,8 @@ Using chalk to colour the console messages in my server-side code so it looks mo
 ### Script(s): `./node_modules/.bin/eslint --fix-dry-run ./client/.`
 ### Usage:
 The script above lives in my package.json. It checks all my client-side code and tells me where I have linting errors.
+.eslint config file. "Joe why did you use a .yml file?" Great question reader. I had never written anything in yaml format so I wanted to try it out. One stackoverflow comment said yaml supports comments. Another said json might have better performance. the more you know.
+I use the config file to override airbrb's linting rules that I dont like.<br/>
 I run this command to install airbnb's eslint config locally :)
 ```bash
   (
@@ -25,6 +37,16 @@ I run this command to install airbnb's eslint config locally :)
     npm info "$PKG@latest" peerDependencies --json | command sed 's/[\{\},]//g ; s/: /@/g' | xargs npm install --save-dev "$PKG@latest"
   )
 ```
+
+</details>
+<hr/>
+
+## Package: [knex](https://github.com/tgriesser/knex)
+<details>
+
+### Config(s): `knexfile, migration builder`
+### Usage:
+Use knex as a javascript layer above SQL. Write JS, create SQL. Pretty neato. Comes with command line usage in creating / managing table migrations. Knexfile is config, db/migrations folder stores migration (queries?) if that's the right term
 
 </details>
 <hr/>
@@ -56,6 +78,7 @@ renderRoutes accepts an array of route objects and renders them. Alternative tha
 ### Usage:
 ConnectedRouter attaches a history object to redux state.
 routerMiddleware is an item in the middleware array applied in creating the redux store. I assume it plays a part in receiving info from the connected router and putting it into the store but idk lol.
+- GOTCHA: I found a bug with ConnectedRouter at version 4.0.8. It came in as undefined as you imported it from the package. For that reason I could recommend installing @5.0.0-alpha.9
 
 </details>
 <hr/>
@@ -102,12 +125,14 @@ Template:
 <hr/>
 ```
 
+## Package listing status
 
-webpack / webpack-cli / webpack-dev-server
+| DONE | TODO |
+| ----- | ----- |
+| babel<br>chalk<br>eslint<br>knex<br>pg<br>react-router-config<br>react-router-redux<br>webpack | react<br>react-hyperscript<br>fela/react-fela<br>feathersjs<br>history<br>cors<br>winston<br>helmet<br>node-dev<br> |
 
-babel:  loader / polyfill / core / preset-env
-
-eslint: airbnb
+scrappy list of todos:
+<details>
 
 react - react dom are just to let me use react framework
 
@@ -129,11 +154,58 @@ mindy STRUCTURE: //
   - reducers use { handleActions } from 'redux-actions'
   - createStructuredSelector from 'reselect'
 
+ripped straight from the getting started page: https://www.apollographql.com/docs/react/essentials/get-started.html
+
+apollo-boost: Package containing everything you need to set up Apollo Client
+react-apollo: View layer integration for React
+graphql-tag: Necessary for parsing your GraphQL queries
+graphql: Also parses your GraphQL queries
+
+
+basic query
+```js
+import { Query } from 'react-apollo'
+import gql from "graphql-tag";
+
+h(Query, {
+  query: {
+    // idk why the backticks are messed up
+    gql`{ rates(currency: "USD") { currency } }`
+    }, [
+      ({loading, error, data}) => { // stuff that comes back from query
+      if(loading) return h('p', 'loading')
+        if(error) return h('p', 'error :(')
+      }
+      return (
+        h('div', {}, [
+        //do something with data
+      ])
+      )
+    ]) // end Query element here
+```
+
+Cool properties of Query element: https://www.apollographql.com/docs/react/essentials/queries.html
+{
+  query: callback to deal with load, error and data,
+  variables: ?_?,
+  skip: ?_? both probably alter the data request,
+  pollInterval: force request for new data @ milliseconds. near realtime data,
+  notifyOnNetworkStatusChange: puts networkStatus in the callback too
+}
+
+refetch comes out of the callback destructure ({loading, error, data, refetch}) => ...
+
+</details>
+
 
 TODOS: //
-- document dependencies
-- set up structured selectors for state / props
-- I dont have any setup for a database, is that a problem...
-  -> if I could set up PG that would be good learning
+- document dependencies (IN PROG)
+- reselect / recompose (getters, actions, state management and access)
+- GraphQL
+- Web workers
 - add picture / gif, every good readme needs one
-- hide / show on package description
+- learn how to describe an ORM
+
+DONE: //
+- set up PG db
+- copy basic feathers

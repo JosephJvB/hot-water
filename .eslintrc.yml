@@ -15,7 +15,7 @@ rules:
     - error
     - single
   semi:
-    - error
+    - off
     - never
   padded-blocks:
     - off
